@@ -3,11 +3,16 @@ services:
     app:
         build: python
         volumes:
-            - "./study_englishword_app:/home/workspace/app/study_englishword_app"
+            - "./app:/app"
         ports:
             - "8000:8000"
+        environment:
+            MYSQL_DATABASE: english_app_db
+            MYSQL_USER: django
+            MYSQL_PASSWORD: django
+            MYSQL_HOSTNAME: mariadb
         tty: true
-        links:
+        depends_on:
             - mariadb
 
     mariadb:
@@ -18,4 +23,7 @@ services:
             - "./database/mysql-data:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: english_app_db
+            MYSQL_USER: django
+            MYSQL_PASSWORD: django
             TZ: 'Asia/Tokyo'
