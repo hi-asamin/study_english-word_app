@@ -27,9 +27,19 @@ This is my First step learn English.
 |create word|POST|words/|
 |delete word|DELETE|words/`<id>`|
 
-## DB Tables
-
+## Database
+### Tables
 * words
-* part_of_speech
-* meaning
+* part_of_speech( will be normalized in the future)
+* meaning( will be normalized in the future)
 * test_result
+
+### Columns(word)
+|name|type|default|nullable|
+|---|---|---|---|
+|id|int|auto|no|
+|name|char(50)||no|
+|mean1|char(100)||no|
+|mean2|char(100)|blank|yes|
+|mean3|char(100)|blank|yes|
+|logical_delete_flag|bool|False|no|
