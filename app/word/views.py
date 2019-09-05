@@ -10,7 +10,7 @@ from .forms import WordForm
 class WordFilterView(FilterView):
     model = Word
     filterset_class = WordFilter
-    queryset = Word.objects.all().order_by('-created_at')
+    queryset = Word.objects.all().order_by('-create_datetime')
 
     strict = False
 
@@ -31,7 +31,7 @@ class WordDetailView(DetailView):
 
 class WordCreateView(CreateView):
     model = Word
-    form_class = WordFrom
+    form_class = WordForm
     success_url = reverse_lazy('index')
 
 class WordUpdateView(UpdateView):
